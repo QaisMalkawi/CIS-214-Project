@@ -95,15 +95,21 @@ namespace Project214
             (new Login()).ShowDialog();
             this.Close();
         }
-        GameOfLife gameInstance;
+        Form gameInstance;
         private void btn_playAGame_Click(object sender, EventArgs e)
         {
             if (gameInstance == null || gameInstance.IsDisposed)
             {
-                GameOfLife gol = new GameOfLife(this);
-                gol.Show();
-                gol.Location = new Point(this.Location.X - gol.Width, this.Location.Y);
-                gameInstance = gol;
+                Form game;
+
+                if (DateTime.Now.Ticks % 2 == 0)
+                    game = new GameOfLife(this);
+                else
+                    game = new TicTacToe(this);
+
+                game.Show();
+                game.Location = new Point(this.Location.X - game.Width, this.Location.Y);
+                gameInstance = game;
             }
         }
 

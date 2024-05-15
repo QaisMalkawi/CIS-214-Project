@@ -34,9 +34,11 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.btn_register = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.cbx_rePassVisible = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
             this.tbx_rePassword = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.cbx_passVisible = new System.Windows.Forms.CheckBox();
             this.tbx_password = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -47,8 +49,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btn_login = new System.Windows.Forms.Button();
             this.btn_playAGame = new System.Windows.Forms.Button();
-            this.cbx_rePassVisible = new System.Windows.Forms.CheckBox();
-            this.cbx_passVisible = new System.Windows.Forms.CheckBox();
             this.flowPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -149,6 +149,18 @@
             this.panel7.Size = new System.Drawing.Size(461, 73);
             this.panel7.TabIndex = 3;
             // 
+            // cbx_rePassVisible
+            // 
+            this.cbx_rePassVisible.AutoSize = true;
+            this.cbx_rePassVisible.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cbx_rePassVisible.Location = new System.Drawing.Point(356, 9);
+            this.cbx_rePassVisible.Name = "cbx_rePassVisible";
+            this.cbx_rePassVisible.Size = new System.Drawing.Size(101, 17);
+            this.cbx_rePassVisible.TabIndex = 5;
+            this.cbx_rePassVisible.Text = "Show Password";
+            this.cbx_rePassVisible.UseVisualStyleBackColor = true;
+            this.cbx_rePassVisible.CheckedChanged += new System.EventHandler(this.cbx_rePassVisible_CheckedChanged);
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -187,6 +199,18 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(461, 73);
             this.panel3.TabIndex = 3;
+            // 
+            // cbx_passVisible
+            // 
+            this.cbx_passVisible.AutoSize = true;
+            this.cbx_passVisible.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cbx_passVisible.Location = new System.Drawing.Point(356, 9);
+            this.cbx_passVisible.Name = "cbx_passVisible";
+            this.cbx_passVisible.Size = new System.Drawing.Size(101, 17);
+            this.cbx_passVisible.TabIndex = 6;
+            this.cbx_passVisible.Text = "Show Password";
+            this.cbx_passVisible.UseVisualStyleBackColor = true;
+            this.cbx_passVisible.CheckedChanged += new System.EventHandler(this.cbx_passVisible_CheckedChanged);
             // 
             // tbx_password
             // 
@@ -320,30 +344,6 @@
             this.btn_playAGame.Text = "Play A Game";
             this.btn_playAGame.UseVisualStyleBackColor = true;
             this.btn_playAGame.Click += new System.EventHandler(this.btn_playAGame_Click);
-            // 
-            // cbx_rePassVisible
-            // 
-            this.cbx_rePassVisible.AutoSize = true;
-            this.cbx_rePassVisible.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.cbx_rePassVisible.Location = new System.Drawing.Point(356, 9);
-            this.cbx_rePassVisible.Name = "cbx_rePassVisible";
-            this.cbx_rePassVisible.Size = new System.Drawing.Size(101, 17);
-            this.cbx_rePassVisible.TabIndex = 5;
-            this.cbx_rePassVisible.Text = "Show Password";
-            this.cbx_rePassVisible.UseVisualStyleBackColor = true;
-            this.cbx_rePassVisible.CheckedChanged += new System.EventHandler(this.cbx_rePassVisible_CheckedChanged);
-            // 
-            // cbx_passVisible
-            // 
-            this.cbx_passVisible.AutoSize = true;
-            this.cbx_passVisible.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.cbx_passVisible.Location = new System.Drawing.Point(356, 9);
-            this.cbx_passVisible.Name = "cbx_passVisible";
-            this.cbx_passVisible.Size = new System.Drawing.Size(101, 17);
-            this.cbx_passVisible.TabIndex = 6;
-            this.cbx_passVisible.Text = "Show Password";
-            this.cbx_passVisible.UseVisualStyleBackColor = true;
-            this.cbx_passVisible.CheckedChanged += new System.EventHandler(this.cbx_passVisible_CheckedChanged);
             // 
             // Register
             // 
