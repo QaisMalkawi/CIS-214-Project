@@ -66,7 +66,7 @@
             this.lbl_description.Font = new System.Drawing.Font("Ubuntu", 8F);
             this.lbl_description.Location = new System.Drawing.Point(113, 35);
             this.lbl_description.Name = "lbl_description";
-            this.lbl_description.Size = new System.Drawing.Size(152, 60);
+            this.lbl_description.Size = new System.Drawing.Size(103, 60);
             this.lbl_description.TabIndex = 2;
             this.lbl_description.Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor in" +
     "cididunt ut labore et dolore magna aliqua.";
@@ -76,11 +76,12 @@
             // 
             this.lbl_price.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_price.Font = new System.Drawing.Font("Ubuntu", 18F);
-            this.lbl_price.Location = new System.Drawing.Point(271, 35);
+            this.lbl_price.Location = new System.Drawing.Point(222, 35);
             this.lbl_price.Name = "lbl_price";
-            this.lbl_price.Size = new System.Drawing.Size(76, 60);
+            this.lbl_price.Size = new System.Drawing.Size(125, 60);
             this.lbl_price.TabIndex = 3;
             this.lbl_price.Text = "00$";
+            this.lbl_price.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.lbl_price.DoubleClick += new System.EventHandler(this.itemClicked);
             // 
             // ShopItemCard

@@ -30,19 +30,19 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.tbx_shopName = new System.Windows.Forms.TextBox();
-            this.btn_addElement = new System.Windows.Forms.Button();
-            this.dgv_shopItem = new System.Windows.Forms.DataGridView();
-            this.btn_rename = new System.Windows.Forms.Button();
-            this.btn_selectImage = new System.Windows.Forms.Button();
-            this.pbx_ShopIcon = new Project214.Forms.Custom_Components.ExpandedPictureBox();
+            this.btn_deleteElement = new System.Windows.Forms.Button();
             this.btn_saveChanges = new System.Windows.Forms.Button();
+            this.btn_selectImage = new System.Windows.Forms.Button();
+            this.btn_addElement = new System.Windows.Forms.Button();
+            this.tbx_shopName = new System.Windows.Forms.TextBox();
+            this.pbx_shopIcon = new Project214.Forms.Custom_Components.ExpandedPictureBox();
+            this.dgv_shopItem = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbx_shopIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_shopItem)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbx_ShopIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -56,12 +56,12 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.btn_deleteElement);
             this.splitContainer1.Panel1.Controls.Add(this.btn_saveChanges);
             this.splitContainer1.Panel1.Controls.Add(this.btn_selectImage);
-            this.splitContainer1.Panel1.Controls.Add(this.btn_rename);
             this.splitContainer1.Panel1.Controls.Add(this.btn_addElement);
             this.splitContainer1.Panel1.Controls.Add(this.tbx_shopName);
-            this.splitContainer1.Panel1.Controls.Add(this.pbx_ShopIcon);
+            this.splitContainer1.Panel1.Controls.Add(this.pbx_shopIcon);
             // 
             // splitContainer1.Panel2
             // 
@@ -70,15 +70,41 @@
             this.splitContainer1.SplitterDistance = 112;
             this.splitContainer1.TabIndex = 0;
             // 
-            // tbx_shopName
+            // btn_deleteElement
             // 
-            this.tbx_shopName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(59)))), ((int)(((byte)(72)))));
-            this.tbx_shopName.Font = new System.Drawing.Font("Ubuntu", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbx_shopName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(221)))), ((int)(((byte)(225)))));
-            this.tbx_shopName.Location = new System.Drawing.Point(116, 22);
-            this.tbx_shopName.Name = "tbx_shopName";
-            this.tbx_shopName.Size = new System.Drawing.Size(252, 32);
-            this.tbx_shopName.TabIndex = 1;
+            this.btn_deleteElement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_deleteElement.Font = new System.Drawing.Font("Ubuntu", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_deleteElement.Location = new System.Drawing.Point(477, 77);
+            this.btn_deleteElement.Name = "btn_deleteElement";
+            this.btn_deleteElement.Size = new System.Drawing.Size(131, 32);
+            this.btn_deleteElement.TabIndex = 6;
+            this.btn_deleteElement.Text = "Delete Item";
+            this.btn_deleteElement.UseVisualStyleBackColor = true;
+            this.btn_deleteElement.Click += new System.EventHandler(this.btn_deleteElement_Click);
+            // 
+            // btn_saveChanges
+            // 
+            this.btn_saveChanges.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_saveChanges.Font = new System.Drawing.Font("Ubuntu", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_saveChanges.Location = new System.Drawing.Point(647, 3);
+            this.btn_saveChanges.Name = "btn_saveChanges";
+            this.btn_saveChanges.Size = new System.Drawing.Size(98, 32);
+            this.btn_saveChanges.TabIndex = 5;
+            this.btn_saveChanges.Text = "Save";
+            this.btn_saveChanges.UseVisualStyleBackColor = true;
+            this.btn_saveChanges.Click += new System.EventHandler(this.btn_saveChanges_Click);
+            // 
+            // btn_selectImage
+            // 
+            this.btn_selectImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_selectImage.Font = new System.Drawing.Font("Ubuntu", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_selectImage.Location = new System.Drawing.Point(116, 78);
+            this.btn_selectImage.Name = "btn_selectImage";
+            this.btn_selectImage.Size = new System.Drawing.Size(145, 32);
+            this.btn_selectImage.TabIndex = 4;
+            this.btn_selectImage.Text = "Select Image";
+            this.btn_selectImage.UseVisualStyleBackColor = true;
+            this.btn_selectImage.Click += new System.EventHandler(this.btn_selectImage_Click);
             // 
             // btn_addElement
             // 
@@ -91,6 +117,26 @@
             this.btn_addElement.Text = "Add Item";
             this.btn_addElement.UseVisualStyleBackColor = true;
             this.btn_addElement.Click += new System.EventHandler(this.btn_addElement_Click);
+            // 
+            // tbx_shopName
+            // 
+            this.tbx_shopName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(59)))), ((int)(((byte)(72)))));
+            this.tbx_shopName.Font = new System.Drawing.Font("Ubuntu", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbx_shopName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(221)))), ((int)(((byte)(225)))));
+            this.tbx_shopName.Location = new System.Drawing.Point(116, 22);
+            this.tbx_shopName.Name = "tbx_shopName";
+            this.tbx_shopName.Size = new System.Drawing.Size(252, 32);
+            this.tbx_shopName.TabIndex = 1;
+            // 
+            // pbx_shopIcon
+            // 
+            this.pbx_shopIcon.Location = new System.Drawing.Point(2, 2);
+            this.pbx_shopIcon.Name = "pbx_shopIcon";
+            this.pbx_shopIcon.Size = new System.Drawing.Size(108, 108);
+            this.pbx_shopIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbx_shopIcon.TabIndex = 0;
+            this.pbx_shopIcon.TabStop = false;
+            this.pbx_shopIcon.DoubleClick += new System.EventHandler(this.pbx_shopIcon_DoubleClick);
             // 
             // dgv_shopItem
             // 
@@ -111,51 +157,6 @@
             this.dgv_shopItem.Name = "dgv_shopItem";
             this.dgv_shopItem.Size = new System.Drawing.Size(748, 353);
             this.dgv_shopItem.TabIndex = 16;
-            // 
-            // btn_rename
-            // 
-            this.btn_rename.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_rename.Font = new System.Drawing.Font("Ubuntu", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_rename.Location = new System.Drawing.Point(374, 22);
-            this.btn_rename.Name = "btn_rename";
-            this.btn_rename.Size = new System.Drawing.Size(99, 32);
-            this.btn_rename.TabIndex = 3;
-            this.btn_rename.Text = "Rename";
-            this.btn_rename.UseVisualStyleBackColor = true;
-            this.btn_rename.Click += new System.EventHandler(this.btn_rename_Click);
-            // 
-            // btn_selectImage
-            // 
-            this.btn_selectImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_selectImage.Font = new System.Drawing.Font("Ubuntu", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_selectImage.Location = new System.Drawing.Point(463, 77);
-            this.btn_selectImage.Name = "btn_selectImage";
-            this.btn_selectImage.Size = new System.Drawing.Size(145, 32);
-            this.btn_selectImage.TabIndex = 4;
-            this.btn_selectImage.Text = "Select Image";
-            this.btn_selectImage.UseVisualStyleBackColor = true;
-            this.btn_selectImage.Click += new System.EventHandler(this.btn_selectImage_Click);
-            // 
-            // pbx_ShopIcon
-            // 
-            this.pbx_ShopIcon.Location = new System.Drawing.Point(2, 2);
-            this.pbx_ShopIcon.Name = "pbx_ShopIcon";
-            this.pbx_ShopIcon.Size = new System.Drawing.Size(108, 108);
-            this.pbx_ShopIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbx_ShopIcon.TabIndex = 0;
-            this.pbx_ShopIcon.TabStop = false;
-            // 
-            // btn_saveChanges
-            // 
-            this.btn_saveChanges.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_saveChanges.Font = new System.Drawing.Font("Ubuntu", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_saveChanges.Location = new System.Drawing.Point(647, 3);
-            this.btn_saveChanges.Name = "btn_saveChanges";
-            this.btn_saveChanges.Size = new System.Drawing.Size(98, 32);
-            this.btn_saveChanges.TabIndex = 5;
-            this.btn_saveChanges.Text = "Save";
-            this.btn_saveChanges.UseVisualStyleBackColor = true;
-            this.btn_saveChanges.Click += new System.EventHandler(this.btn_saveChanges_Click);
             // 
             // ManageShop
             // 
@@ -178,8 +179,8 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbx_shopIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_shopItem)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbx_ShopIcon)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -187,12 +188,12 @@
         #endregion
 
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private Custom_Components.ExpandedPictureBox pbx_ShopIcon;
+        private Custom_Components.ExpandedPictureBox pbx_shopIcon;
         private System.Windows.Forms.TextBox tbx_shopName;
         private System.Windows.Forms.Button btn_addElement;
         private System.Windows.Forms.DataGridView dgv_shopItem;
-        private System.Windows.Forms.Button btn_rename;
         private System.Windows.Forms.Button btn_selectImage;
         private System.Windows.Forms.Button btn_saveChanges;
+        private System.Windows.Forms.Button btn_deleteElement;
     }
 }

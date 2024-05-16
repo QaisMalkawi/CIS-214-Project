@@ -41,7 +41,7 @@ namespace Project214.Forms
                         {
                             shopID = (int)reader["ID"];
                             tbx_shopName.Text = shopName = (string)reader["ShopName"];
-                            pbx_ShopIcon.Image = GeneralUtils.Base64ToBitmap(Encoding.ASCII.GetString((byte[])reader["Icon"]));
+                            pbx_shopIcon.Image = GeneralUtils.Base64ToBitmap(Encoding.ASCII.GetString((byte[])reader["Icon"]));
                         }
                     }
                 }
@@ -106,11 +106,6 @@ namespace Project214.Forms
             }
             if (dbres == DialogResult.Yes || dbres == DialogResult.No)
             {
-                if (dgv_shopItem.Rows.Count == 0)
-                {
-                    MessageBox.Show("You need to have atleast 1 shop to create an item");
-                    return;
-                }
                 using (SqlConnection connection = new SqlConnection(StaticValues.DatabaseInfo.ConnectionString))
                 {
                     try
@@ -187,7 +182,7 @@ namespace Project214.Forms
             }
         }
 
-        private void btn_rename_Click(object sender, EventArgs e)
+        private void RenameShop(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(tbx_shopName.Text) || string.IsNullOrWhiteSpace(tbx_shopName.Text))
             {
@@ -221,7 +216,15 @@ namespace Project214.Forms
 
         private void btn_selectImage_Click(object sender, EventArgs e)
         {
+            if(dgv_shopItem.SelectedCells.Count == 0)
+            {
+                MessageBox.Show("You must select at-least 1 Icon/Image cell");
+                return;
+            }
+
             string imageBase64 = GeneralUtils.GetImage();
+            if (imageBase64 == null) return;
+
             foreach (DataGridViewCell cell in dgv_shopItem.SelectedCells)
             {
                 cell.Value = imageBase64;
@@ -232,6 +235,60 @@ namespace Project214.Forms
         {
             if (MessageBox.Show("Are you sure you want to save the changes?\nthese changes cannot be undone once saved!") != DialogResult.OK) return;
             shopItemSave();
+            RenameShop(sender, e);
+        }
+
+        private void btn_deleteElement_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to delete this record?\nthese changes cannot be undone!") != DialogResult.OK) return;
+            using (SqlConnection connection = new SqlConnection(StaticValues.DatabaseInfo.ConnectionString))
+            {
+                try
+                {
+                    connection.Open();
+                }
+                catch
+                {
+                    MessageBox.Show("Couldn't connect to the Database service, is it running?");
+                    return;
+                }
+
+                foreach (DataGridViewRow row in dgv_shopItem.SelectedRows)
+                {
+                    using (SqlCommand cmd = new SqlCommand("DELETE FROM ShopItem WHERE ID = @ID", connection))
+                    {
+                        cmd.Parameters.AddWithValue("ID", (int)row.Cells[0].Value);
+                        cmd.ExecuteNonQuery();
+                    }
+                    dgv_shopItem.Rows.Remove(row);
+                }
+            }
+        }
+
+        private void pbx_shopIcon_DoubleClick(object sender, EventArgs e)
+        {
+            string imageBase64 = GeneralUtils.GetImage();
+            if(imageBase64 == null) return;
+
+            using (SqlConnection connection = new SqlConnection(StaticValues.DatabaseInfo.ConnectionString))
+            {
+                try
+                {
+                    connection.Open();
+                }
+                catch
+                {
+                    MessageBox.Show("Couldn't connect to the Database service, is it running?");
+                    return;
+                }
+                using (SqlCommand cmd = new SqlCommand("UPDATE Shop SET Icon = @Icon WHERE ID = @ID", connection))
+                {
+                    cmd.Parameters.AddWithValue("@ID", shopID);
+                    cmd.Parameters.AddWithValue("@Icon", Encoding.UTF8.GetBytes(imageBase64));//byte[]
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            pbx_shopIcon.Image = GeneralUtils.Base64ToBitmap(imageBase64);
         }
     }
 }

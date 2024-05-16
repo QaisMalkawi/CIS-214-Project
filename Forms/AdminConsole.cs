@@ -145,8 +145,6 @@ namespace Project214.Forms
             #region Save Implementation
         private void userAccountSave()
         {
-
-
             using (SqlConnection connection = new SqlConnection(StaticValues.DatabaseInfo.ConnectionString))
             {
                 try
